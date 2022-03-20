@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "administrate-field-has_many_with_fields"
-  spec.version = "0.1.0"
+  spec.version = "0.1.1"
   spec.authors = ["James Newman"]
   spec.email = ["jamesmnewman1@gmail.com"]
 
