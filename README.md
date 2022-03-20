@@ -1,8 +1,6 @@
 # Administrate::Field::HasManyWithFields
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/administrate/field/has_many_with_fields`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+An administrate plug-in designed to allow you to only show certain fields when rendering a `has_many` relationship instead of rendering entire collection's dashboard. Extends the `Administrate::Field::HasMany` field.
 
 ## Installation
 
@@ -22,17 +20,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Turn the standard `has_many` relationship in your administrate dashboard from this
 
-## Development
+```ruby
+class UserDashboard < Administrate::BaseDashboard
+  # ATTRIBUTE_TYPES
+  # a hash that describes the type of each of the model's fields.
+  #
+  # Each different type represents an Administrate::Field object,
+  # which determines how the attribute is displayed
+  # on pages throughout the dashboard.
+  ATTRIBUTE_TYPES = {
+    posts: Field::HasMany,
+    # ...
+  }
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+into this
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+class UserDashboard < Administrate::BaseDashboard
+  # ATTRIBUTE_TYPES
+  # a hash that describes the type of each of the model's fields.
+  #
+  # Each different type represents an Administrate::Field object,
+  # which determines how the attribute is displayed
+  # on pages throughout the dashboard.
+  ATTRIBUTE_TYPES = {
+    posts: Field::HasManyWithFields.with_options(fields: [:id, :attr_1, :attr_2, :method_1]),
+    # ...
+  }
+```
 
-## Contributing
+The standard administrate `with_options` method (limit, class_name, etc) still works because this inherits from `Administrate::Field::HasMany`. The `fields` array also works with both model attributes and model methods.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/administrate-field-has_many_with_fields.
 
 ## License
 
