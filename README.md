@@ -14,10 +14,6 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install administrate-field-has_many_with_fields
-
 ## Usage
 
 Turn the standard `has_many` relationship in your administrate dashboard from this
