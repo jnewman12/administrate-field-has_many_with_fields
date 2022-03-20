@@ -7,7 +7,7 @@ An administrate plug-in designed to allow you to only show certain fields when r
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'administrate-field-has_many_with_fields'
+gem 'administrate-field-has_many_with_fields', '~> 0.1.1'
 ```
 
 And then execute:
